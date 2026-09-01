@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کامک | رزرو جلسه</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir-Regular.woff2') format('woff2');
+            font-weight: normal;
+        }
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir-Bold.woff2') format('woff2');
+            font-weight: bold;
+        }
+        @font-face {
+            font-family: 'Peikan';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css') format('woff2');
+        }
+
+        body {
+            font-family: 'Vazir', 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(145deg, #FDF9F2 0%, #FFF4E6 100%);
+            color: #2E2C2A;
+            line-height: 1.7;
+        }
+
+        :root {
+            --arzoo: #FFB347;
+            --aseman: #4A90E2;
+            --eshgh: #F15A5A;
+            --dark: #2E2C2A;
+            --glass: rgba(255, 255, 255, 0.92);
+            --glass-border: rgba(255, 255, 255, 0.5);
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+        }
+        .logo-text {
+            font-family: 'Peikan', 'Vazir', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--arzoo);
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+        .nav-menu a:hover {
+            color: var(--arzoo);
+            transform: translateY(-2px);
+        }
+
+        .btn-register {
+            background: var(--eshgh);
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 40px;
+            box-shadow: 0 4px 12px rgba(241, 90, 90, 0.3);
+        }
+        .btn-register:hover {
+            background: var(--aseman);
+            transform: scale(0.98);
+        }
+
+        .btn-reserve-nav {
+            background: var(--aseman);
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 40px;
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+        }
+        .btn-reserve-nav:hover {
+            background: var(--arzoo);
+            transform: scale(0.98);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 28px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 24px;
+        }
+
+        .hero-page {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 241, 226, 0.9));
+            border-radius: 60px;
+            padding: 50px 30px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .hero-page h1 {
+            font-family: 'Peikan', sans-serif;
+            font-size: 2.5rem;
+            color: var(--arzoo);
+        }
+        .hero-page p {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            color: #4a5568;
+        }
+
+        .reserve-card {
+            max-width: 650px;
+            margin: 0 auto 40px;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border-radius: 40px;
+            padding: 40px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid rgba(0, 0, 0, 0.06);
+            border-radius: 60px;
+            font-family: 'Vazir', sans-serif;
+            font-size: 1rem;
+            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.6);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--arzoo);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(255, 179, 71, 0.06);
+        }
+        .form-group textarea {
+            border-radius: 20px;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-submit {
+            background: var(--eshgh);
+            color: #fff;
+            border: none;
+            padding: 16px;
+            border-radius: 60px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+            font-family: 'Vazir', sans-serif;
+        }
+        .btn-submit:hover {
+            background: var(--aseman);
+            transform: scale(0.98);
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 10px;
+            border-radius: 60px;
+        }
+        .message.success {
+            color: #28a745;
+            background: #e6f9ed;
+        }
+        .message.error {
+            color: #F15A5A;
+            background: #fde8e8;
+        }
+
+        /* ===== فوتر ===== */
+        .footer {
+            background: var(--dark);
+            color: #ccc;
+            padding: 50px 30px 35px;
+            text-align: center;
+            margin-top: 60px;
+            border-radius: 50px 50px 0 0;
+            position: relative;
+        }
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: var(--arzoo);
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 0 12px;
+            font-size: 1.6rem;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            transform: translateY(-4px);
+        }
+
+        /* ===== آیکون مخفی ادمین ===== */
+        .admin-trigger {
+            position: absolute;
+            bottom: 15px;
+            left: 30px;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            transition: 0.3s;
+            background: none;
+            border: none;
+            font-family: 'Vazir', sans-serif;
+        }
+        .admin-trigger:hover {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ===== پنل ادمین (مخفی) ===== */
+        .admin-panel-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+        .admin-panel-overlay.show {
+            display: flex;
+        }
+
+        .admin-panel-box {
+            background: white;
+            border-radius: 40px;
+            padding: 40px 35px;
+            max-width: 700px;
+            width: 95%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .admin-panel-box .close-btn {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            background: none;
+            border: none;
+        }
+        .admin-panel-box .close-btn:hover {
+            color: var(--eshgh);
+        }
+
+        .admin-panel-box h2 {
+            font-family: 'Peikan', sans-serif;
+            color: var(--eshgh);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .admin-panel-box .reserve-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            border-right: 4px solid var(--arzoo);
+        }
+        .admin-panel-box .reserve-item .name {
+            font-weight: 700;
+        }
+        .admin-panel-box .reserve-item .detail {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .admin-panel-box .reserve-item .status {
+            display: inline-block;
+            padding: 2px 14px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .admin-panel-box .reserve-item .status.pending {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        .admin-panel-box .reserve-item .status.approved {
+            background: #d1fae5;
+            color: #059669;
+        }
+        .admin-panel-box .reserve-item .status.rejected {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .admin-login-box {
+            max-width: 380px;
+            margin: 20px auto;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 24px;
+            text-align: center;
+        }
+        .admin-login-box input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 60px;
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+        .admin-login-box .btn {
+            background: var(--aseman);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .admin-login-box .btn:hover {
+            background: var(--eshgh);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 12px 20px;
+            }
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background: white;
+                padding: 20px;
+                border-radius: 28px;
+                margin-top: 15px;
+            }
+            .nav-menu.show {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+            .hero-page h1 {
+                font-size: 1.8rem;
+            }
+            .reserve-card {
+                padding: 25px 20px;
+            }
+            .admin-trigger {
+                bottom: 10px;
+                left: 15px;
+                font-size: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="kamake.jpg" alt="کامک" class="logo-img">
+            <span class="logo-text">کامک، یک آرزوی کوچک</span>
+        </div>
+        <button class="hamburger" id="hamburgerBtn">☰</button>
+        <nav class="nav-menu" id="navMenu">
+            <a href="index.html">خانه</a>
+            <a href="services.html">خدمات</a>
+            <a href="shop.html">فروشگاه</a>
+            <a href="podcast.html">پادکست</a>
+            <a href="blog.html">مقالات</a>
+            <a href="club.html">باشگاه</a>
+            <a href="contact.html">تماس با ما</a>
+            <a href="reserve.html" class="btn-reserve-nav">📅 رزرو جلسه</a>
+            <a href="register.html" class="btn-register">ورود / ثبت‌نام</a>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+        <div class="container">
+            <div class="hero-page" data-aos="fade-up">
+                <h1>📅 رزرو جلسه کوچینگ</h1>
+                <p>جلسه خود را انتخاب کنید و مسیر رشد را شروع کنید</p>
+            </div>
+
+            <div class="reserve-card" data-aos="zoom-in">
+                <h2 style="font-family:'Peikan'; color:var(--dark); margin-bottom:20px; text-align:center;">✨ اطلاعات جلسه</h2>
+
+                <div id="reserveForm">
+                    <div class="form-group">
+                        <label>👤 نام و نام خانوادگی</label>
+                        <input type="text" id="reserveName" placeholder="نام خود را وارد کنید">
+                    </div>
+                    <div class="form-group">
+                        <label>📱 شماره موبایل</label>
+                        <input type="text" id="reservePhone" placeholder="09123456789">
+                    </div>
+                    <div class="form-group">
+                        <label>📅 تاریخ جلسه</label>
+                        <input type="date" id="reserveDate">
+                    </div>
+                    <div class="form-group">
+                        <label>⏰ زمان جلسه</label>
+                        <select id="reserveTime">
+                            <option value="">انتخاب...</option>
+                            <option value="09:00">۰۹:۰۰</option>
+                            <option value="10:00">۱۰:۰۰</option>
+                            <option value="11:00">۱۱:۰۰</option>
+                            <option value="12:00">۱۲:۰۰</option>
+                            <option value="14:00">۱۴:۰۰</option>
+                            <option value="15:00">۱۵:۰۰</option>
+                            <option value="16:00">۱۶:۰۰</option>
+                            <option value="17:00">۱۷:۰۰</option>
+                            <option value="18:00">۱۸:۰۰</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>🎯 نوع جلسه</label>
+                        <select id="reserveType">
+                            <option value="">انتخاب...</option>
+                            <option value="حضوری">🏫 حضوری</option>
+                            <option value="آنلاین">💻 آنلاین</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>📝 توضیحات (اختیاری)</label>
+                        <textarea id="reserveNote" placeholder="نکته خاصی دارید؟"></textarea>
+                    </div>
+
+                    <button class="btn-submit" onclick="submitReserve()">📤 ثبت رزرو</button>
+                    <div id="reserveMessage" class="message"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div style="font-size: 1.3rem; font-weight: 800;">کامک، یک آرزوی کوچک</div>
+        <div style="font-size: 0.9rem; color: var(--arzoo);">کوچینگ آموزشی مدارس کشور</div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin: 25px 0;">
+            <a href="index.html">خانه</a>
+            <a href="services.html">خدمات</a>
+            <a href="shop.html">فروشگاه</a>
+            <a href="podcast.html">پادکست</a>
+            <a href="blog.html">مقالات</a>
+            <a href="club.html">باشگاه</a>
+            <a href="contact.html">تماس با ما</a>
+            <a href="reserve.html">رزرو جلسه</a>
+            <a href="register.html">ثبت‌نام</a>
+        </div>
+        <p>📍 اصفهان، نجف‌آباد، خیابان اصلی، ساختمان کامک</p>
+        <p>📞 ۰۲۱-۱۲۳۴۵۶۷۸ | 📧 info@kamake.com</p>
+        <p>© ۲۰۲۶ کامک</p>
+
+        <!-- ===== آیکون مخفی ادمین ===== -->
+        <button class="admin-trigger" onclick="openAdminPanel()">⚙️</button>
+    </footer>
+
+    <!-- ===== پنل ادمین (مخفی) ===== -->
+    <div class="admin-panel-overlay" id="adminPanelOverlay">
+        <div class="admin-panel-box">
+            <button class="close-btn" onclick="closeAdminPanel()">✕</button>
+
+            <div id="adminLoginSection">
+                <h2>🔐 ورود به پنل مدیریت</h2>
+                <div class="admin-login-box">
+                    <p style="color:#888; margin-bottom:12px;">رمز عبور مدیر را وارد کنید</p>
+                    <input type="password" id="adminPasswordInput" placeholder="رمز عبور...">
+                    <button class="btn" onclick="adminLogin()">ورود</button>
+                    <div id="adminLoginMessage" style="color:#F15A5A; margin-top:10px; font-size:0.85rem;"></div>
+                </div>
+            </div>
+
+            <div id="adminPanelContent" style="display:none;">
+                <h2>📋 مدیریت رزروها</h2>
+                <button onclick="adminLogout()" style="background:#6c757d; color:white; border:none; padding:8px 20px; border-radius:40px; cursor:pointer; font-weight:600; margin-bottom:20px;">🚪 خروج از پنل</button>
+                <div id="adminReserveList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = "http://localhost:3000/reserves";
+        const ADMIN_PASSWORD = "admin123";
+
+        // ===== دریافت همه رزروها =====
+        async function getReserves() {
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error('خطا');
+                return await response.json();
+            } catch (error) {
+                return [];
+            }
+        }
+
+        // ===== ذخیره رزرو جدید =====
+        async function saveReserve(data) {
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                if (!response.ok) throw new Error('خطا');
+                return await response.json();
+            } catch (error) {
+                return null;
+            }
+        }
+
+        // ===== ثبت رزرو =====
+        async function submitReserve() {
+            const name = document.getElementById('reserveName').value.trim();
+            const phone = document.getElementById('reservePhone').value.trim();
+            const date = document.getElementById('reserveDate').value;
+            const time = document.getElementById('reserveTime').value;
+            const type = document.getElementById('reserveType').value;
+            const note = document.getElementById('reserveNote').value.trim();
+            const msg = document.getElementById('reserveMessage');
+
+            if (!name || name.length < 3) {
+                msg.className = 'message error';
+                msg.textContent = '❌ نام را وارد کنید.';
+                return;
+            }
+            if (!phone || phone.length !== 11 || !phone.startsWith('09')) {
+                msg.className = 'message error';
+                msg.textContent = '❌ شماره موبایل نامعتبر است.';
+                return;
+            }
+            if (!date || !time || !type) {
+                msg.className = 'message error';
+                msg.textContent = '❌ همه فیلدها را پر کنید.';
+                return;
+            }
+
+            const reserves = await getReserves();
+            const conflict = reserves.find(r => r.date === date && r.time === time && r.status !== 'لغو شد' && r.status !== 'رد شد');
+            if (conflict) {
+                msg.className = 'message error';
+                msg.textContent = '❌ این زمان قبلاً رزرو شده است.';
+                return;
+            }
+
+            const newReserve = {
+                name,
+                phone,
+                date,
+                time,
+                type,
+                note,
+                status: 'در انتظار تایید',
+                createdAt: new Date().toISOString()
+            };
+
+            const result = await saveReserve(newReserve);
+            if (result) {
+                msg.className = 'message success';
+                msg.textContent = '✅ جلسه شما با موفقیت رزرو شد!';
+                document.getElementById('reserveName').value = '';
+                document.getElementById('reservePhone').value = '';
+                document.getElementById('reserveDate').value = '';
+                document.getElementById('reserveTime').value = '';
+                document.getElementById('reserveType').value = '';
+                document.getElementById('reserveNote').value = '';
+                setTimeout(() => { msg.className = 'message';
+                    msg.textContent = ''; }, 5000);
+            } else {
+                msg.className = 'message error';
+                msg.textContent = '❌ خطا در ثبت رزرو.';
+            }
+        }
+
+        // ===== ادمین =====
+        function openAdminPanel() {
+            document.getElementById('adminPanelOverlay').classList.add('show');
+            document.getElementById('adminLoginSection').style.display = 'block';
+            document.getElementById('adminPanelContent').style.display = 'none';
+            document.getElementById('adminPasswordInput').value = '';
+            document.getElementById('adminLoginMessage').textContent = '';
+        }
+
+        function closeAdminPanel() {
+            document.getElementById('adminPanelOverlay').classList.remove('show');
+        }
+
+        function adminLogin() {
+            const password = document.getElementById('adminPasswordInput').value.trim();
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('adminLoginSection').style.display = 'none';
+                document.getElementById('adminPanelContent').style.display = 'block';
+                loadAdminReserves();
+            } else {
+                document.getElementById('adminLoginMessage').textContent = '❌ رمز عبور اشتباه است.';
+            }
+        }
+
+        function adminLogout() {
+            document.getElementById('adminLoginSection').style.display = 'block';
+            document.getElementById('adminPanelContent').style.display = 'none';
+            document.getElementById('adminPasswordInput').value = '';
+            document.getElementById('adminLoginMessage').textContent = '';
+        }
+
+        async function loadAdminReserves() {
+            const container = document.getElementById('adminReserveList');
+            const reserves = await getReserves();
+
+            if (reserves.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color:#999; padding:20px;">هیچ رزروی ثبت نشده است.</p>';
+                return;
+            }
+
+            container.innerHTML = reserves.map(r => `
+                <div class="reserve-item">
+                    <div class="name">${r.name}</div>
+                    <div class="detail">📱 ${r.phone}</div>
+                    <div class="detail">📅 ${r.date} - ⏰ ${r.time}</div>
+                    <div class="detail">🎯 ${r.type} ${r.note ? '📝 ' + r.note : ''}</div>
+                    <div><span class="status ${r.status === 'تایید شد' ? 'approved' : r.status === 'رد شد' ? 'rejected' : 'pending'}">${r.status}</span></div>
+                    <div style="font-size:0.75rem; color:#999;">ثبت: ${new Date(r.createdAt).toLocaleString('fa-IR')}</div>
+                </div>
+            `).join('');
+        }
+
+        // ===== تاریخ پیش‌فرض =====
+        const today = new Date();
+        const y = today.getFullYear();
+        const m = String(today.getMonth() + 1).padStart(2, '0');
+        const d = String(today.getDate()).padStart(2, '0');
+        document.getElementById('reserveDate').value = `${y}-${m}-${d}`;
+
+        // ===== منو همبرگری =====
+        const hamburger = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        hamburger.addEventListener('click', () => { navMenu.classList.toggle('show'); });
+    </script>
+
+</body>
+</html>

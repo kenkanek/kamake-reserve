@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ====== سئو (SEO) ====== -->
+    <title>کامک | کوچینگ تحصیلی و مشاوره آموزشی برای دانش‌آموزان</title>
+    <meta name="description" content="موسسه کامک، کوچینگ تحصیلی و مشاوره آموزشی برای دانش‌آموزان، والدین، معلمان و مدیران مدارس. کشف سبک یادگیری، برنامه‌ریزی درسی و رشد فردی.">
+    <meta name="keywords" content="کامک, کوچینگ تحصیلی, مشاوره آموزشی, برنامه ریزی درسی, یادگیری, مدرسه, دانش آموز, معلم">
+    <link rel="canonical" href="https://kamake.ir/">
+    <meta property="og:title" content="کامک | کوچینگ تحصیلی و مشاوره آموزشی">
+    <meta property="og:description" content="موسسه کامک، کوچینگ تحصیلی و مشاوره آموزشی برای دانش‌آموزان و والدین.">
+    <meta property="og:url" content="https://kamake.ir/">
+    <meta property="og:type" content="website">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir-Regular.woff2') format('woff2');
+            font-weight: normal;
+        }
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir-Bold.woff2') format('woff2');
+            font-weight: bold;
+        }
+        @font-face {
+            font-family: 'Peikan';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css') format('woff2');
+        }
+        
+        body {
+            font-family: 'Vazir', 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(145deg, #e8f0fe 0%, #fef5e8 100%);
+            color: #2E2C2A;
+            line-height: 1.7;
+        }
+        
+        :root {
+            --arzoo: #FFB347;
+            --aseman: #4A90E2;
+            --eshgh: #F15A5A;
+            --dark: #2E2C2A;
+            --glass: rgba(255, 255, 255, 0.92);
+            --glass-border: rgba(255, 255, 255, 0.5);
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        .logo-img { height: 55px; width: auto; }
+        .logo-text { font-family: 'Peikan', 'Vazir', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--arzoo); display: inline-block; margin-right: 10px; }
+        
+        .nav-menu { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+        .nav-menu a { text-decoration: none; color: var(--dark); font-weight: 600; transition: 0.3s; }
+        .nav-menu a:hover { color: var(--arzoo); transform: translateY(-2px); }
+        .btn-register { background: var(--eshgh); color: white !important; padding: 8px 24px; border-radius: 40px; box-shadow: 0 4px 12px rgba(241, 90, 90, 0.3); }
+        .btn-register:hover { background: var(--aseman); transform: scale(0.98); }
+        .hamburger { display: none; font-size: 28px; background: none; border: none; cursor: pointer; }
+        
+        .container { max-width: 1300px; margin: 0 auto; padding: 30px 24px; }
+        
+        .hero {
+            background: #FFF4E6;
+            border-radius: 60px;
+            padding: 60px 50px;
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.05);
+        }
+        .hero-content {
+            flex: 1;
+            min-width: 280px;
+        }
+        .hero-image {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 75%;
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .hero h1 { font-family: 'Peikan', sans-serif; font-size: 3rem; color: var(--arzoo); margin-bottom: 15px; }
+        .hero h1 span { color: var(--aseman); }
+        .hero p { font-size: 1.2rem; color: #4a5568; margin-bottom: 25px; }
+        
+        .btn-primary {
+            background: var(--eshgh);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            margin-left: 15px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(241, 90, 90, 0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--arzoo);
+            color: var(--arzoo);
+            padding: 12px 32px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .btn-primary:hover, .btn-outline:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); }
+        .btn-primary:hover { background: var(--aseman); }
+        .btn-outline:hover { background: var(--arzoo); color: white; }
+        
+        .wish-carousel {
+            background: rgba(74, 144, 226, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 24px;
+            border-radius: 80px;
+            margin: 40px 0;
+            text-align: center;
+            color: white;
+            font-size: 1.6rem;
+            font-weight: bold;
+            font-family: 'Peikan', 'Vazir', sans-serif;
+        }
+        .wish-carousel div { animation: fadeInUp 0.7s ease; display: inline-block; padding: 6px 24px; }
+        .wish-carousel div:hover { transform: scale(1.08); text-shadow: 0 0 18px rgba(255,255,255,0.9); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin: 50px 0; }
+        .card-glass {
+            background: var(--glass); backdrop-filter: blur(12px); border-radius: 48px; padding: 40px 25px;
+            text-align: center; transition: 0.35s; border: 1px solid var(--glass-border);
+        }
+        .card-glass:hover { transform: translateY(-10px); background: rgba(255,255,255,0.96); }
+        .card-glass .icon { font-size: 3rem; margin-bottom: 20px; display: inline-block; transition: transform 0.3s; }
+        .card-glass:hover .icon { transform: scale(1.1) rotate(2deg); }
+        .card-glass h3 { font-family: 'Peikan', sans-serif; color: var(--arzoo); margin-bottom: 15px; }
+        
+        .service-dual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 50px 0;
+        }
+        .service-box {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            transition: 0.3s;
+        }
+        .service-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.96);
+        }
+        .service-box h3 {
+            font-family: 'Peikan', sans-serif;
+            color: var(--aseman);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .service-box p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .podcast-section {
+            background: linear-gradient(135deg, var(--arzoo), #FFD29E);
+            border-radius: 48px;
+            padding: 50px;
+            margin: 50px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .footer {
+            background: var(--dark);
+            color: #ccc;
+            padding: 50px 30px 35px;
+            text-align: center;
+            margin-top: 60px;
+            border-radius: 50px 50px 0 0;
+        }
+        .footer a { color: #ccc; text-decoration: none; }
+        .footer a:hover { color: var(--arzoo); }
+        .social-icons a { display: inline-block; margin: 0 12px; font-size: 1.6rem; transition: 0.2s; }
+        .social-icons a:hover { transform: translateY(-4px); }
+        
+        @media (max-width: 768px) {
+            .header { padding: 12px 20px; }
+            .nav-menu { display: none; width: 100%; flex-direction: column; background: white; padding: 20px; border-radius: 28px; margin-top: 15px; }
+            .nav-menu.show { display: flex; }
+            .hamburger { display: block; }
+            .hero { flex-direction: column-reverse; text-align: center; padding: 40px 25px; }
+            .hero h1 { font-size: 1.8rem; }
+            .service-dual { grid-template-columns: 1fr; }
+            .wish-carousel { font-size: 1.2rem; }
+            .hero-image img { max-width: 60%; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div style="display: flex; align-items: center; gap: 12px;">
+        <img src="kamake.jpg" alt="کامک | مشاوره و کوچینگ تخصصی" class="logo-img">
+        <span class="logo-text">کامک، یک آرزوی کوچک</span>
+    </div>
+    <button class="hamburger" id="hamburgerBtn">☰</button>
+    <nav class="nav-menu" id="navMenu">
+        <a href="index.html">خانه</a>
+        <a href="services.html">خدمات</a>
+        <a href="shop.html">فروشگاه</a>
+        <a href="podcast.html">پادکست</a>
+        <a href="blog.html">مقالات</a>
+        <a href="club.html">باشگاه</a>
+        <a href="contact.html">تماس با ما</a>
+        <a href="register.html" class="btn-register">ورود / ثبت‌نام</a>
+    </nav>
+</header>
+
+<main>
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero" data-aos="fade-up">
+            <div class="hero-content">
+                <h1>کامک، <span>یک آرزوی کوچک</span></h1>
+                <p>راهنمایی برای دانش‌آموز، والدین، معلم، مدیر – از آرزو تا واقعیت</p>
+                <div>
+                    <a href="register.html" class="btn-primary">رزرو جلسه کوچینگ</a>
+                    <a href="#" class="btn-outline">آرزوی تو چیه؟</a>
+                </div>
+            </div>
+            <div class="hero-image" data-aos="fade-left" data-aos-delay="200">
+                <img src="vuv5qzvbb.png" alt="کودک آرزومند - موسسه کامک">
+            </div>
+        </div>
+
+        <!-- کاروسل آرزوها -->
+        <div class="wish-carousel" data-aos="zoom-in">
+            <div>✨ "می‌خوام شعار بدم" ✨</div>
+            <div>😊 "می‌خوام شجاع باشم" 😊</div>
+            <div>🚀 "می‌خوام خلبان بشم" 🚀</div>
+        </div>
+
+        <!-- مربی همراه کیست؟ -->
+        <h2 style="font-family:'Peikan'; text-align:center; font-size:2rem; color:var(--arzoo);" data-aos="fade-up">مربی همراه کیست؟</h2>
+        <div class="category-grid">
+            <div class="card-glass" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon">🎓</div>
+                <h3>دانش‌آموز</h3>
+                <p>"یاد می‌گیری به آرزوت برسی"</p>
+                <small>جلسات کوچینگ فردی و گروهی</small>
+            </div>
+            <div class="card-glass" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon">👪</div>
+                <h3>والدین</h3>
+                <p>"مربی همراه کودک"</p>
+                <small>آموزش مهارت‌های حمایت از آرزوها</small>
+            </div>
+            <div class="card-glass" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon">🍎</div>
+                <h3>معلمان</h3>
+                <p>"ابزار کوچینگ در کلاس"</p>
+                <small>تبدیل کلاس به کارگاه آرزوها</small>
+            </div>
+            <div class="card-glass" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon">🏫</div>
+                <h3>مدیران آموزشی</h3>
+                <p>"مدرسه رویا را بساز"</p>
+                <small>مشاوره سازمانی برای مدارس</small>
+            </div>
+        </div>
+
+        <!-- خدمات حضوری و غیرحضوری -->
+        <div class="service-dual">
+            <div class="service-box" data-aos="flip-right">
+                <h3>🏫 حضوری</h3>
+                <p>کارگاه در مدارس<br>رویدادهای انگیزشی<br>اردوهای آرزوها</p>
+                <a href="register.html" class="btn-primary" style="padding:10px 25px; margin-top:20px;">رزرو حضوری</a>
+            </div>
+            <div class="service-box" data-aos="flip-left">
+                <h3>💻 غیرحضوری</h3>
+                <p>پکیج ویدیویی<br>جلسات زوم<br>پشتیبانی تلفنی</p>
+                <a href="register.html" class="btn-primary" style="padding:10px 25px; margin-top:20px;">شروع آنلاین</a>
+            </div>
+        </div>
+
+        <!-- پادکست -->
+        <div class="podcast-section" data-aos="zoom-in-up">
+            <h2 style="font-family:'Peikan'; font-size:2rem;">🎙️ صدای یک آرزوی کوچک</h2>
+            <p>پادکست آموزشی کامک – اپیزودهای جدید هر هفته</p>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div style="font-size:1.3rem; font-weight:800;">کامک، یک آرزوی کوچک</div>
+    <div style="font-size:0.9rem; color:var(--arzoo);">کوچینگ آموزشی مدارس کشور</div>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:25px; margin:25px 0;">
+        <a href="index.html">خانه</a>
+        <a href="services.html">خدمات</a>
+        <a href="shop.html">فروشگاه</a>
+        <a href="podcast.html">پادکست</a>
+        <a href="blog.html">مقالات</a>
+        <a href="club.html">باشگاه</a>
+        <a href="contact.html">تماس با ما</a>
+        <a href="register.html">ثبت‌نام</a>
+    </div>
+    <p>📍 اصفهان، نجف‌آباد، خیابان اصلی، ساختمان کامک</p>
+    <p>📞 ۰۲۱-۱۲۳۴۵۶۷۸ | 📧 info@kamake.com</p>
+    <p>© ۲۰۲۶ کامک</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 700, once: false });
+    const hamburger = document.getElementById('hamburgerBtn');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => { navMenu.classList.toggle('show'); });
+    
+    const carouselItems = document.querySelectorAll('.wish-carousel div');
+    let index = 0;
+    if(carouselItems.length) {
+        setInterval(() => { carouselItems[index].style.display = 'none'; index = (index + 1) % carouselItems.length; carouselItems[index].style.display = 'inline-block'; }, 3500);
+        for(let i=1; i<carouselItems.length; i++) carouselItems[i].style.display = 'none';
+    }
+</script>
+<script src="header.js"></script>
+</body>
+</html>

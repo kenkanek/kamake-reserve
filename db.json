@@ -1,0 +1,38 @@
+{
+  "reserves": [
+    {
+      "id": "1",
+      "name": "علی رضایی",
+      "phone": "09123456789",
+      "date": "2026-08-31",
+      "time": "10:00",
+      "type": "حضوری",
+      "note": "تست دستی",
+      "status": "در انتظار تایید",
+      "createdAt": "2026-08-31T12:00:00.000Z"
+    },
+    {
+      "name": "علیییی",
+      "phone": "09135724878",
+      "date": "1111-11-11",
+      "time": "16:00",
+      "type": "حضوری",
+      "note": "1111",
+      "status": "در انتظار تایید",
+      "createdAt": "2026-08-31T16:26:19.927Z",
+      "id": "RublLkynyN8"
+    },
+    {
+      "name": "ddddd",
+      "phone": "09135762322",
+      "date": "4444-04-04",
+      "time": "17:00",
+      "type": "حضوری",
+      "note": "1",
+      "status": "در انتظار تایید",
+      "createdAt": "2026-09-01T11:55:53.028Z",
+      "id": "LeMZle9xQwE"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
