@@ -134,10 +134,12 @@
     </footer>
 
     <script>
+        // ===== منوی همبرگری =====
         const hamburger = document.getElementById('hamburgerBtn');
         const navMenu = document.getElementById('navMenu');
         hamburger.addEventListener('click', () => { navMenu.classList.toggle('show'); });
 
+        // ===== تنظیمات =====
         const API_KEY = "V62xdo9rsn4eNWHbsoKu0aZrc6BRP6I7t6WVS7dG4ZZn5RNX";
         const TEMPLATE_ID = "188144";
         const SERVER_URL = "https://kamake-reserve.onrender.com";
@@ -155,10 +157,12 @@
         const countdownSpan = document.getElementById('countdown');
         const resendBtn = document.getElementById('resendBtn');
 
+        // ===== تولید کد تصادفی =====
         function generateOtp() {
             return Math.floor(100000 + Math.random() * 900000).toString();
         }
 
+        // ===== ارسال کد از طریق SMS.ir =====
         async function sendVerificationCode(phoneNumber, code) {
             const url = "https://api.sms.ir/v1/send/verify";
             const payload = {
@@ -186,6 +190,7 @@
             }
         }
 
+        // ===== تایمر =====
         function startTimer() {
             timerSeconds = 120;
             timerDisplay.classList.remove('hidden');
@@ -201,4 +206,142 @@
                     timerDisplay.classList.add('hidden');
                     resendBtn.classList.remove('hidden');
                     otpMessage.className = 'message error';
-                    otpMessage.text
+                    otpMessage.textContent = '⏳ زمان وارد کردن کد به اتمام رسید.';
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(timerSeconds / 60);
+            const secs = timerSeconds % 60;
+            countdownSpan.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // ===== ارسال کد =====
+        async function sendOtp() {
+            const phone = phoneInput.value.trim();
+            const phoneRegex = /^09[0-9]{9}$/;
+
+            if (!phoneRegex.test(phone)) {
+                phoneMessage.className = 'message error';
+                phoneMessage.textContent = '❌ شماره موبایل نامعتبر است (09xxxxxxxxx)';
+                return;
+            }
+
+            phoneMessage.className = 'message hidden';
+            phoneMessage.textContent = '';
+
+            const otp = generateOtp();
+            storedOtp = otp;
+            storedPhone = phone;
+
+            const result = await sendVerificationCode(phone, otp);
+            if (result.success) {
+                startTimer();
+                otpMessage.className = 'message success';
+                otpMessage.textContent = '✅ کد با موفقیت ارسال شد.';
+                setTimeout(() => {
+                    otpMessage.className = 'message hidden';
+                    otpMessage.textContent = '';
+                }, 3000);
+                otpInput.focus();
+            } else {
+                phoneMessage.className = 'message error';
+                phoneMessage.textContent = result.error;
+            }
+        }
+
+        // ===== ارسال مجدد =====
+        async function resendOtp() {
+            if (storedPhone) {
+                const newOtp = generateOtp();
+                storedOtp = newOtp;
+                const result = await sendVerificationCode(storedPhone, newOtp);
+                if (result.success) {
+                    startTimer();
+                    resendBtn.classList.add('hidden');
+                    otpMessage.className = 'message success';
+                    otpMessage.textContent = '✅ کد جدید ارسال شد.';
+                    setTimeout(() => {
+                        otpMessage.className = 'message hidden';
+                        otpMessage.textContent = '';
+                    }, 3000);
+                    otpInput.value = '';
+                    otpInput.focus();
+                } else {
+                    otpMessage.className = 'message error';
+                    otpMessage.textContent = '❌ خطا در ارسال مجدد';
+                }
+            }
+        }
+
+        // ===== تایید کد و ورود =====
+        async function verifyOtp() {
+            const code = otpInput.value.trim();
+
+            if (!code || code.length !== 6) {
+                otpMessage.className = 'message error';
+                otpMessage.textContent = '❌ کد باید ۶ رقم باشد';
+                return;
+            }
+
+            if (code === storedOtp) {
+                let username;
+
+                // ===== چک کردن کاربر در Render =====
+                try {
+                    const res = await fetch(`${SERVER_URL}/users?phone=${storedPhone}`);
+                    const existingUsers = await res.json();
+
+                    if (existingUsers.length > 0) {
+                        username = existingUsers[0].username;
+                    } else {
+                        username = 'u' + Math.floor(100000 + Math.random() * 900000);
+                        await fetch(`${SERVER_URL}/users`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                phone: storedPhone,
+                                username: username,
+                                registeredAt: new Date().toISOString()
+                            })
+                        });
+                    }
+                } catch (error) {
+                    username = 'u' + Math.floor(100000 + Math.random() * 900000);
+                }
+
+                localStorage.setItem('kamake_current_user', JSON.stringify({
+                    phone: storedPhone,
+                    username: username
+                }));
+
+                otpMessage.className = 'message success';
+                otpMessage.textContent = `✅ خوش آمدید! نام کاربری شما: ${username}`;
+
+                if (timerInterval) clearInterval(timerInterval);
+                timerDisplay.classList.add('hidden');
+
+                setTimeout(() => {
+                    window.location.href = 'user.html';
+                }, 1500);
+
+            } else {
+                otpMessage.className = 'message error';
+                otpMessage.textContent = '❌ کد اشتباه است. دوباره تلاش کنید.';
+                otpInput.value = '';
+                otpInput.focus();
+            }
+        }
+
+        // ===== ورود با Enter =====
+        phoneInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendOtp();
+        });
+        otpInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') verifyOtp();
+        });
+    </script>
+
+</body>
+</html>
