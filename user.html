@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>کامک | پنل کاربری</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @font-face { font-family: 'Vazir'; src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir-Regular.woff2') format('woff2'); font-weight: normal; }
+        @font-face { font-family: 'Vazir'; src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir-Bold.woff2') format('woff2'); font-weight: bold; }
+        @font-face { font-family: 'Peikan'; src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css') format('woff2'); }
+        body { font-family: 'Vazir', 'Poppins', 'Segoe UI', Tahoma, sans-serif; background: linear-gradient(145deg, #FDF9F2 0%, #FFF4E6 100%); color: #2E2C2A; line-height: 1.7; }
+        :root { --arzoo: #FFB347; --aseman: #4A90E2; --eshgh: #F15A5A; --dark: #2E2C2A; --glass: rgba(255,255,255,0.92); --glass-border: rgba(255,255,255,0.5); }
+        .header { background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.4); }
+        .logo-img { height: 55px; width: auto; }
+        .logo-text { font-family: 'Peikan', 'Vazir', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--arzoo); display: inline-block; margin-right: 10px; }
+        .nav-menu { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+        .nav-menu a { text-decoration: none; color: var(--dark); font-weight: 600; transition: 0.3s; font-size: 0.95rem; }
+        .nav-menu a:hover { color: var(--arzoo); transform: translateY(-2px); }
+        .btn-register { background: var(--eshgh); color: white !important; padding: 8px 20px; border-radius: 40px; box-shadow: 0 4px 12px rgba(241, 90, 90, 0.3); }
+        .btn-register:hover { background: var(--aseman); transform: scale(0.98); }
+        .btn-reserve-nav { background: var(--aseman); color: white !important; padding: 8px 20px; border-radius: 40px; box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3); }
+        .btn-reserve-nav:hover { background: var(--arzoo); transform: scale(0.98); }
+        .hamburger { display: none; font-size: 28px; background: none; border: none; cursor: pointer; }
+        .container { max-width: 900px; margin: 0 auto; padding: 30px 24px; }
+        .hero-page { background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,241,226,0.9)); border-radius: 60px; padding: 50px 30px; text-align: center; margin-bottom: 40px; }
+        .hero-page h1 { font-family: 'Peikan', sans-serif; font-size: 2.5rem; color: var(--arzoo); }
+        .hero-page p { font-size: 1.1rem; margin-top: 10px; color: #4a5568; }
+        .user-panel { background: var(--glass); backdrop-filter: blur(12px); border-radius: 40px; padding: 35px; border: 1px solid var(--glass-border); margin-bottom: 30px; }
+        .user-panel h3 { font-family: 'Peikan', sans-serif; color: var(--dark); margin-bottom: 20px; text-align: center; }
+        .user-info-box { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .user-info-box .info { background: #f8f9fa; padding: 15px; border-radius: 20px; text-align: center; }
+        .user-info-box .info .label { font-size: 0.85rem; color: #888; }
+        .user-info-box .info .value { font-weight: 700; color: var(--dark); direction: ltr; }
+        .logout-btn { background: #6c757d; color: white; border: none; padding: 12px 30px; border-radius: 60px; font-weight: 700; cursor: pointer; width: 100%; font-family: 'Vazir', sans-serif; transition: 0.3s; }
+        .logout-btn:hover { background: var(--eshgh); }
+        .login-required { text-align: center; padding: 50px 20px; background: #f8f9fa; border-radius: 30px; }
+        .login-required .icon { font-size: 3rem; color: var(--eshgh); margin-bottom: 15px; }
+        .login-required h3 { font-family: 'Peikan', sans-serif; margin-bottom: 10px; }
+        .login-required a { display: inline-block; background: var(--aseman); color: white; padding: 12px 30px; border-radius: 60px; text-decoration: none; font-weight: 700; margin-top: 15px; }
+        .hidden { display: none !important; }
+        .footer { background: var(--dark); color: #ccc; padding: 50px 30px 35px; text-align: center; margin-top: 60px; border-radius: 50px 50px 0 0; }
+        .footer a { color: #ccc; text-decoration: none; }
+        .footer a:hover { color: var(--arzoo); }
+        .social-icons a { display: inline-block; margin: 0 12px; font-size: 1.6rem; transition: 0.2s; }
+        .social-icons a:hover { transform: translateY(-4px); }
+        @media (max-width: 768px) { .header { padding: 12px 20px; } .nav-menu { display: none; width: 100%; flex-direction: column; background: white; padding: 20px; border-radius: 28px; margin-top: 15px; } .nav-menu.show { display: flex; } .hamburger { display: block; } .hero-page h1 { font-size: 1.8rem; } .user-info-box { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="kamake.jpg" alt="کامک" class="logo-img">
+            <span class="logo-text">کامک، یک آرزوی کوچک</span>
+        </div>
+        <button class="hamburger" id="hamburgerBtn">☰</button>
+        <nav class="nav-menu" id="navMenu">
+            <a href="index.html">خانه</a>
+            <a href="services.html">خدمات</a>
+            <a href="shop.html">فروشگاه</a>
+            <a href="podcast.html">پادکست</a>
+            <a href="blog.html">مقالات</a>
+            <a href="club.html">باشگاه</a>
+            <a href="contact.html">تماس با ما</a>
+            <a href="reserve.html" class="btn-reserve-nav">📅 رزرو جلسه</a>
+            <a href="register.html" class="btn-register">ورود / ثبت‌نام</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="hero-page">
+                <h1>👤 پنل کاربری</h1>
+                <p>خوش اومدی به خانواده کامک</p>
+            </div>
+
+            <div id="loginRequiredBox" class="login-required hidden">
+                <div class="icon">🔒</div>
+                <h3>لطفاً وارد حساب کاربری خود شوید</h3>
+                <p>برای دیدن پنل کاربری، ابتدا وارد شوید.</p>
+                <a href="register.html">🔑 ورود / ثبت‌نام</a>
+            </div>
+
+            <div id="userPanel" class="user-panel hidden">
+                <h3>🎉 خوش آمدید <span id="displayUsername"></span></h3>
+
+                <div class="user-info-box">
+                    <div class="info">
+                        <div class="label">📱 شماره موبایل</div>
+                        <div class="value" id="displayPhone">--</div>
+                    </div>
+                    <div class="info">
+                        <div class="label">👤 نام کاربری</div>
+                        <div class="value" id="displayUsername2">--</div>
+                    </div>
+                </div>
+
+                <div id="reserveStatusSection" style="margin-top:25px; border-top:2px dashed #eee; padding-top:20px;">
+                    <h4 style="font-family:'Peikan'; color:var(--dark); margin-bottom:15px;">📋 وضعیت رزرو جلسات</h4>
+                    <div id="reserveStatusList"></div>
+                </div>
+
+                <button class="logout-btn" style="margin-top:25px;" onclick="logoutUser()">🚪 خروج از حساب</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div style="font-size: 1.3rem; font-weight: 800;">کامک، یک آرزوی کوچک</div>
+        <div style="font-size: 0.9rem; color: var(--arzoo);">کوچینگ آموزشی مدارس کشور</div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin: 25px 0;">
+            <a href="index.html">خانه</a>
+            <a href="services.html">خدمات</a>
+            <a href="shop.html">فروشگاه</a>
+            <a href="podcast.html">پادکست</a>
+            <a href="blog.html">مقالات</a>
+            <a href="club.html">باشگاه</a>
+            <a href="contact.html">تماس با ما</a>
+            <a href="reserve.html">رزرو جلسه</a>
+            <a href="register.html">ثبت‌نام</a>
+        </div>
+        <p>📍 اصفهان، نجف‌آباد، خیابان اصلی، ساختمان کامک</p>
+        <p>📞 ۰۲۱-۱۲۳۴۵۶۷۸ | 📧 info@kamake.com</p>
+        <p>© ۲۰۲۶ کامک</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        hamburger.addEventListener('click', () => { navMenu.classList.toggle('show'); });
+
+        const API_URL = "https://kamake-reserve.onrender.com";
+
+        function getCurrentUser() {
+            return JSON.parse(localStorage.getItem('kamake_current_user') || 'null');
+        }
+
+        async function loadUserInfo() {
+            const user = getCurrentUser();
+            if (!user) {
+                document.getElementById('loginRequiredBox').classList.remove('hidden');
+                document.getElementById('userPanel').classList.add('hidden');
+                return;
+            }
+
+            document.getElementById('loginRequiredBox').classList.add('hidden');
+            document.getElementById('userPanel').classList.remove('hidden');
+            document.getElementById('displayUsername').textContent = user.username || 'کاربر';
+            document.getElementById('displayUsername2').textContent = user.username || '--';
+            document.getElementById('displayPhone').textContent = user.phone || '--';
+
+            await loadReserveStatus(user);
+        }
+
+        async function loadReserveStatus(user) {
+            const container = document.getElementById('reserveStatusList');
+            try {
+                const response = await fetch(`${API_URL}/reserves`);
+                const reserves = await response.json();
+                const userReserves = reserves.filter(r => r.phone === user.phone);
+
+                if (userReserves.length === 0) {
+                    container.innerHTML = '<p style="color:#999; text-align:center;">شما هیچ رزروی ندارید.</p>';
+                    return;
+                }
+
+                container.innerHTML = userReserves.map(r => {
+                    let statusHTML = '';
+                    let statusText = '';
+                    if (r.status === 'تایید شد') {
+                        statusHTML = '<span style="background:#d1fae5; color:#059669; padding:4px 14px; border-radius:40px;">✅ تایید شد</span>';
+                        statusText = '✅ جلسه شما تایید شد. لطفاً تا تماس پشتیبانی شکیبا باشید.';
+                    } else if (r.status === 'رد شد') {
+                        statusHTML = '<span style="background:#fee2e2; color:#dc2626; padding:4px 14px; border-radius:40px;">❌ رد شد</span>';
+                        statusText = '❌ متأسفانه جلسه شما تایید نشد. لطفاً از طریق <a href="https://eitaa.com/kamakeir" target="_blank" style="color:#4A90E2;">ایتا</a> با پشتیبانی تماس بگیرید.';
+                    } else {
+                        statusHTML = '<span style="background:#fef3c7; color:#d97706; padding:4px 14px; border-radius:40px;">⏳ در انتظار تایید</span>';
+                        statusText = '⏳ جلسه شما در انتظار تایید است. به زودی با شما تماس می‌گیریم.';
+                    }
+                    return `
+                        <div style="background:#f8f9fa; padding:15px 20px; border-radius:16px; margin-bottom:12px; border-right:4px solid ${r.status === 'تایید شد' ? '#28a745' : r.status === 'رد شد' ? '#dc3545' : '#FFB347'};">
+                            <div style="display:flex; justify-content:space-between; flex-wrap:wrap; align-items:center; gap:10px;">
+                                <div><strong>📅 ${r.date}</strong> - ⏰ ${r.time} <div style="font-size:0.9rem; color:#666;">${r.type} ${r.note ? '📝 ' + r.note : ''}</div></div>
+                                <div>${statusHTML}</div>
+                            </div>
+                            <div style="margin-top:10px; font-size:0.95rem; color:#444; background:white; padding:10px 14px; border-radius:12px;">${statusText}</div>
+                        </div>
+                    `;
+                }).join('');
+            } catch (error) {
+                container.innerHTML = '<p style="color:#F15A5A; text-align:center;">❌ خطا در دریافت وضعیت رزرو.</p>';
+            }
+        }
+
+        function logoutUser() {
+            if (confirm('آیا مطمئن هستید که میخواهید خارج شوید؟')) {
+                localStorage.removeItem('kamake_current_user');
+                window.location.href = 'register.html';
+            }
+        }
+
+        loadUserInfo();
+    </script>
+
+</body>
+</html>
